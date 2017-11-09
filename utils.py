@@ -2,6 +2,7 @@ import os
 import json
 import shutil
 import logging
+import codecs
 
 import tensorflow as tf
 from conlleval import return_report
@@ -55,7 +56,7 @@ def test_ner(results, path):
     Run perl script to evaluate model
     """
     output_file = os.path.join(path, "ner_predict.utf8")
-    with open(output_file, "w") as f:
+    with codecs.open(output_file, "w", "utf8") as f:
         to_write = []
         for block in results:
             for line in block:
