@@ -14,7 +14,7 @@ def load_sentences(path, lower, zeros):
     sentences = []
     sentence = []
     num = 0
-    for line in codecs.open(path, 'r', 'utf8'):
+    for idx, line in enumerate(codecs.open(path, 'r', 'utf8')):
         num+=1
         line = zero_digits(line.rstrip()) if zeros else line.rstrip()
         # print(list(line))
@@ -30,7 +30,7 @@ def load_sentences(path, lower, zeros):
                 # word[0] = " "
             else:
                 word= line.split()
-            assert len(word) >= 2, print([word[0]])
+            assert len(word) >= 2, print([word[0] + '\t' + str(idx)])
             sentence.append(word)
     if len(sentence) > 0:
         if 'DOCSTART' not in sentence[0][0]:

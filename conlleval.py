@@ -289,7 +289,7 @@ def main(argv):
     if args.file is None:
         counts = evaluate(sys.stdin, args)
     else:
-        with open(args.file) as f:
+        with codecs.open(args.file, 'r', 'utf8') as f:
             counts = evaluate(f, args)
     report(counts)
 
